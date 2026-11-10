@@ -1,0 +1,118 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;padding:0;background:#eef0f4;color:#1f1f1f;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;}
+*{box-sizing:border-box;}
+.email-wrap{width:100%;background:#eef0f4;padding:32px 0 40px;}
+.email-card{width:100%;max-width:760px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.10);}
+.brand{background:linear-gradient(135deg,#86141e 0%,#5a0d14 100%);color:#ffffff;text-align:center;padding:28px 24px 24px;}
+.brand-title{display:block;font-family:Georgia,'Times New Roman',serif;font-size:34px;line-height:1.1;font-weight:bold;letter-spacing:0.5px;}
+.brand-subtitle{display:block;margin-top:8px;font-size:13px;line-height:1.2;font-weight:400;opacity:0.85;letter-spacing:0.3px;}
+.content{padding:32px 36px 36px;}
+h1{margin:0 0 6px;color:#1f1f1f;font-size:24px;line-height:1.2;text-align:center;font-weight:700;letter-spacing:0.3px;}
+.meta-box{margin:20px auto 0;max-width:420px;background:#f8f6f7;border-left:4px solid #86141e;border-radius:0 6px 6px 0;padding:16px 20px;}
+.meta-row{margin:0;color:#333333;font-size:14px;line-height:1.6;}
+.meta-label{color:#777777;font-weight:400;}
+.meta-val{font-weight:600;color:#1f1f1f;}
+.generated{margin:16px 0 0;color:#999999;font-size:12px;text-align:center;}
+.divider{height:2px;background:linear-gradient(90deg,transparent,#d8d8d8,transparent);margin:28px 0 24px;}
+.section-title{margin:0 0 16px;color:#86141e;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.summary-grid{width:100%;border-collapse:separate;border-spacing:10px 0;margin:0 0 28px;}
+.summary-cell{width:20%;vertical-align:top;}
+.metric{border-radius:8px;padding:18px 14px;text-align:center;border:1px solid #e8e8e8;}
+.metric-present{background:#f0faf3;border-top:4px solid #168b35;}
+.metric-late{background:#fef8ee;border-top:4px solid #d07a00;}
+.metric-absent{background:#fef2f2;border-top:4px solid #9f1824;}
+.metric-excused{background:#f0f4f8;border-top:4px solid #5b7a91;}
+.metric-fda{background:#fdf0f1;border-top:4px solid #c41e2a;}
+.metric-value{display:block;font-size:32px;line-height:1;font-weight:700;margin-bottom:6px;}
+.metric-present .metric-value{color:#168b35;}
+.metric-late .metric-value{color:#d07a00;}
+.metric-absent .metric-value{color:#9f1824;}
+.metric-excused .metric-value{color:#5b7a91;}
+.metric-fda .metric-value{color:#c41e2a;}
+.metric-label{display:block;font-size:11px;color:#666666;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;}
+.attendance-table{width:100%;border-collapse:collapse;table-layout:fixed;border-radius:8px;overflow:hidden;font-size:13px;border:1px solid #e2e2e2;}
+.attendance-table th{background:#f7f7f9;color:#444444;font-weight:600;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;padding:14px 14px;border-bottom:2px solid #86141e;}
+.attendance-table td{padding:14px 14px;vertical-align:middle;border-bottom:1px solid #f0f0f0;color:#333333;}
+.attendance-table tbody tr:nth-child(even) td{background:#fafafa;}
+.col-id{width:16%;}.col-name{width:26%;}.col-count{width:11%;text-align:center;}.col-status{width:18%;text-align:center;}
+.attendance-table th.col-count{text-align:center;}.attendance-table th.col-status{text-align:center;}
+.status-badge{display:inline-block;min-width:80px;padding:6px 14px;border-radius:20px;font-weight:600;font-size:11px;text-align:center;text-transform:uppercase;letter-spacing:0.3px;}
+.status-good{background:#e8f5e9;color:#2e7d32;}
+.status-fda{background:#fce4ec;color:#c62828;}
+.status-late{background:#fff8e1;color:#e65100;}
+.status-absent{background:#ffebee;color:#b71c1c;}
+.status-excused{background:#e8eef3;color:#37474f;}
+.mobile-label{display:none;font-weight:600;color:#888888;font-size:11px;text-transform:uppercase;letter-spacing:0.3px;margin-right:6px;}
+.footer{background:#f7f7f9;border-top:3px solid #86141e;margin-top:32px;padding:24px 36px;text-align:center;}
+.footer-brand{color:#86141e;font-size:16px;font-weight:700;margin-bottom:8px;}
+.footer-text{color:#888888;font-size:12px;line-height:1.7;}
+/* Gmail-safe mobile: only display:block, no flex/order/inline-block */
+@media only screen and (max-width:640px){
+.email-wrap{padding:0!important;}
+.email-card{border-radius:0!important;box-shadow:none!important;}
+.brand{padding:20px 16px 18px!important;}
+.brand-title{font-size:28px!important;}
+.content{padding:24px 16px 28px!important;}
+h1{font-size:20px!important;}
+.meta-box{max-width:none!important;padding:12px 16px!important;}
+.summary-grid{border-spacing:0 8px!important;}
+.summary-cell{display:block!important;width:100%!important;}
+.metric{padding:12px 14px!important;text-align:left!important;}
+.metric-value{display:inline!important;font-size:24px!important;margin-right:8px!important;margin-bottom:0!important;}
+.metric-label{display:inline!important;}
+.attendance-table{border:0!important;}
+.attendance-table thead{display:none!important;}
+.attendance-table tbody tr{display:block!important;margin-bottom:12px!important;padding:16px!important;border:1px solid #e8e8e8!important;border-left:3px solid #86141e!important;border-radius:8px!important;background:#fff!important;}
+.attendance-table td{display:block!important;width:100%!important;padding:3px 0!important;border:none!important;text-align:center!important;font-size:13px!important;}
+.attendance-table td.col-name{font-weight:700!important;font-size:16px!important;color:#1f1f1f!important;padding-bottom:4px!important;text-align:center!important;}
+.attendance-table td.col-id{color:#888!important;font-size:12px!important;padding-bottom:10px!important;border-bottom:1px solid #f0f0f0!important;text-align:center!important;}
+.attendance-table td.col-status{padding-top:8px!important;text-align:center!important;}
+.mobile-label{display:inline!important;}
+.status-badge{min-width:0!important;}
+.footer{padding:20px 16px!important;}
+}
+</style></head><body>
+<div class="email-wrap"><div class="email-card">
+<div class="brand">
+<span class="brand-title">SEAttendance</span>
+<span class="brand-subtitle">Automated Attendance Management System</span>
+</div>
+<div class="content">
+<h1>Attendance Summary Report</h1>
+<div class="meta-box">
+<div class="meta-row"><span class="meta-label">Subject: </span><span class="meta-val">OOPR212 - Object Oriented Programming</span></div>
+<div class="meta-row"><span class="meta-label">Instructor: </span><span class="meta-val">Prof. Juan Dela Cruz</span></div>
+</div>
+<div class="generated">Generated on April 30, 2026 at 6:00 PM</div>
+<div class="divider"></div>
+<div class="section-title">Overview</div>
+<table class="summary-grid" role="presentation" cellspacing="0" cellpadding="0"><tr>
+<td class="summary-cell"><div class="metric metric-present"><span class="metric-value">145</span><span class="metric-label">Present</span></div></td>
+<td class="summary-cell"><div class="metric metric-late"><span class="metric-value">23</span><span class="metric-label">Late</span></div></td>
+<td class="summary-cell"><div class="metric metric-absent"><span class="metric-value">12</span><span class="metric-label">Absent</span></div></td>
+<td class="summary-cell"><div class="metric metric-excused"><span class="metric-value">8</span><span class="metric-label">Excused</span></div></td>
+<td class="summary-cell"><div class="metric metric-fda"><span class="metric-value">2</span><span class="metric-label">FDA</span></div></td>
+</tr></table>
+<div class="section-title">Student Records</div>
+<table class="attendance-table" cellpadding="0" cellspacing="0">
+<thead><tr>
+<th class="col-name">Student Name</th><th class="col-id">ID Number</th>
+<th class="col-count">Present</th><th class="col-count">Late</th><th class="col-count">Absent</th><th class="col-count">Excused</th><th class="col-status">Status</th>
+</tr></thead><tbody>
+<tr><td class="col-name">Santos, Maria Clara</td><td class="col-id"><span class="mobile-label">ID: </span>2024-00101</td><td class="col-count"><span class="mobile-label">Present: </span>14</td><td class="col-count"><span class="mobile-label">Late: </span>1</td><td class="col-count"><span class="mobile-label">Absent: </span>0</td><td class="col-count"><span class="mobile-label">Excused: </span>1</td><td class="col-status"><span class="mobile-label">Status: </span><span class="status-badge status-good">GOOD</span></td></tr>
+<tr><td class="col-name">Reyes, Juan Miguel</td><td class="col-id"><span class="mobile-label">ID: </span>2024-00102</td><td class="col-count"><span class="mobile-label">Present: </span>12</td><td class="col-count"><span class="mobile-label">Late: </span>3</td><td class="col-count"><span class="mobile-label">Absent: </span>1</td><td class="col-count"><span class="mobile-label">Excused: </span>0</td><td class="col-status"><span class="mobile-label">Status: </span><span class="status-badge status-good">GOOD</span></td></tr>
+<tr><td class="col-name">Garcia, Andrea Joy</td><td class="col-id"><span class="mobile-label">ID: </span>2024-00103</td><td class="col-count"><span class="mobile-label">Present: </span>10</td><td class="col-count"><span class="mobile-label">Late: </span>2</td><td class="col-count"><span class="mobile-label">Absent: </span>4</td><td class="col-count"><span class="mobile-label">Excused: </span>0</td><td class="col-status"><span class="mobile-label">Status: </span><span class="status-badge status-fda">FDA</span></td></tr>
+<tr><td class="col-name">Cruz, Mark Anthony</td><td class="col-id"><span class="mobile-label">ID: </span>2024-00104</td><td class="col-count"><span class="mobile-label">Present: </span>15</td><td class="col-count"><span class="mobile-label">Late: </span>0</td><td class="col-count"><span class="mobile-label">Absent: </span>0</td><td class="col-count"><span class="mobile-label">Excused: </span>1</td><td class="col-status"><span class="mobile-label">Status: </span><span class="status-badge status-good">GOOD</span></td></tr>
+<tr><td class="col-name">Bautista, Princess Mae</td><td class="col-id"><span class="mobile-label">ID: </span>2024-00105</td><td class="col-count"><span class="mobile-label">Present: </span>13</td><td class="col-count"><span class="mobile-label">Late: </span>1</td><td class="col-count"><span class="mobile-label">Absent: </span>2</td><td class="col-count"><span class="mobile-label">Excused: </span>0</td><td class="col-status"><span class="mobile-label">Status: </span><span class="status-badge status-good">GOOD</span></td></tr>
+<tr><td class="col-name">Villanueva, Carl Joshua</td><td class="col-id"><span class="mobile-label">ID: </span>2024-00106</td><td class="col-count"><span class="mobile-label">Present: </span>8</td><td class="col-count"><span class="mobile-label">Late: </span>4</td><td class="col-count"><span class="mobile-label">Absent: </span>3</td><td class="col-count"><span class="mobile-label">Excused: </span>1</td><td class="col-status"><span class="mobile-label">Status: </span><span class="status-badge status-fda">FDA</span></td></tr>
+</tbody></table>
+</div>
+<div class="footer">
+<div class="footer-brand">SEAttendance</div>
+<div class="footer-text">This is an automated report generated by the SEAttendance System.<br>For questions, please contact your department administrator.<br>Please do not reply to this email.</div>
+</div>
+</div></div>
+</body></html>
